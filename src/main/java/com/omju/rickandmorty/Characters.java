@@ -1,6 +1,7 @@
 package com.omju.rickandmorty;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Characters {
     private String id;
@@ -128,5 +129,22 @@ public class Characters {
                 ", url='" + url + '\'' +
                 ", created='" + created + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Characters that = (Characters) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(status, that.status) && Objects.equals(species, that.species) && Objects.equals(type, that.type) && Objects.equals(gender, that.gender) && Arrays.equals(origin, that.origin) && Arrays.equals(location, that.location) && Objects.equals(image, that.image) && Arrays.equals(episode, that.episode) && Objects.equals(url, that.url) && Objects.equals(created, that.created);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(id, name, status, species, type, gender, image, url, created);
+        result = 31 * result + Arrays.hashCode(origin);
+        result = 31 * result + Arrays.hashCode(location);
+        result = 31 * result + Arrays.hashCode(episode);
+        return result;
     }
 }
