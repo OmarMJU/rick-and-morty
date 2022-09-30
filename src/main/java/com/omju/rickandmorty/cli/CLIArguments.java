@@ -3,7 +3,7 @@ package com.omju.rickandmorty.cli;
 import com.beust.jcommander.Parameter;
 
 public class CLIArguments {
-    @Parameter(required = true, descriptionKey = "KEYWORD", description = "KEYWORD")
+    @Parameter(required = true, descriptionKey = "KEYWORD", description = "KEYWORD", validateWith = CLIKeywordValidator.class)
     private String keyword;
 
     @Parameter(names = {"--location", "-l"}, description = "The search can include a location")
@@ -18,7 +18,7 @@ public class CLIArguments {
     @Parameter(names = {"--markdown", "-m"}, description = "Return the results in Markdown format")
     private boolean isMarkdown = false;
 
-    @Parameter(names = {"--help", "-h"}, description = "Show the help about the command", help = true)
+    @Parameter(names = {"--help", "-h"}, description = "Show the help about the command", help = true, validateWith = CLIHelpValidator.class)
     private boolean isHelp;
 
     public CLIArguments() {}
