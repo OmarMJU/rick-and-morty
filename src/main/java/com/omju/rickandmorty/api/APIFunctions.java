@@ -4,7 +4,7 @@ import feign.gson.GsonDecoder;
 import feign.Feign;
 
 public class APIFunctions {
-    static <T> T buildAPI(Class<T> clazz, String url) {
+    public static <T> T buildAPI(Class<T> clazz, String url) {
         return Feign.builder().decoder(new GsonDecoder()).target(clazz, url);
     }
 }
